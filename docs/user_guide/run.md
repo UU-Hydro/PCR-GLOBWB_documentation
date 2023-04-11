@@ -4,4 +4,4 @@ If you have installed and activated the Python package environment, aquired the 
 
 `python deterministic_runner.py <ini_configuration_file>`
 
-where <ini_configuration_file> is the configuration file of PCR-GLOBWB. 
+where <ini_configuration_file\> is the configuration file of PCR-GLOBWB.

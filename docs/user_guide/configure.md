@@ -1,6 +1,6 @@
 # How to configure
 
-PCR-GLOBWB requires a [YAML](https://yaml.org/) configuration file to run. The configuration file details, for example, the simulation period, the location of the inputs and the location where the outputs should be stored. Here we provide a short guide to the configuration file, including some examples. *Note that a detailed description of all model inputs and outputs is given in the [inputs section](../inputs.md) and [outputs section](../outputs.md) respectively*
+PCR-GLOBWB requires a [YAML](https://yaml.org/) configuration file to run. The configuration file details, for example, the simulation period, the location of the inputs and the location where the outputs should be stored. Here we provide a short guide to the configuration file, including some examples. *Note that a detailed description of all model inputs and outputs is given in the [input description section](../input_description) and [output description section](../output_description) respectively*
 
 ## Structure
 
@@ -14,13 +14,26 @@ The configuration file is split into several option sections:
 * *routingOptions* detail the routing inputs.
 * *reportingOptions* detail the simulation outputs and the reporting frequency and aggregation for each output.
 
-## Inputs
+## Options
 
-To run PCR-GLOBWB the configuration file needs to specify all of the required option values. Note that there are at least two things that must always be adjusted:
+To run PCR-GLOBWB the configuration file needs to specify all of the required option details. Several option details just require some text, a date, true/false, a number or a path to a file location for example:
+
+`institution = Department of Physical Geography, Utrecht University`
+
+`startTime = 2000-01-01`
+
+`maxSpinUpsInYears = 0`
+
+`debugWaterBalance = True`
+
+`topographyNC = global_30min/landSurface/topography/topography_parameters_30_arcmin_october_2015.nc`
+
+Note that there are at least two things that must always be adjusted:
 
 * Make sure that you edit or set the *outputDir* (output directory) to the directory that you have access. You do not need to create this directory manually.
 * Make sure that the *cloneMap* file is stored locally in your computing machine. The *cloneMap* file defines the spatial resolution and extent of your study area and must be in the pcraster format. Some examples are given on [our GitHub repository](https://github.com/UU-Hydro/PCR-GLOBWB_model/tree/master/clone_landmask_maps)
 
+## Inputs
 PCR-GLOBWB input and output files for the runs made in Sutanudjaja et al. (2018)[@sutanudjaja18] are available on [Yoda](https://geo.data.uu.nl/research-pcrglobwb/pcr-globwb_gmd_paper_sutanudjaja_et_al_2018/). For requesting access, please send an e-mail to E.H.Sutanudjaja@uu.nl.
 
 The input files (and some output files) are also available on the [OPeNDAP server](https://opendap.4tu.nl/thredds/catalog/data2/pcrglobwb/catalog.html). The [OPeNDAP protocol](https://www.opendap.org) allow users to access PCR-GLOBWB input files from the remote server and perform PCR-GLOBWB runs without the need to download the input files (with total size ~250 GB for the global extent).
