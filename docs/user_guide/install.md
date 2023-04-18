@@ -32,7 +32,7 @@ Please follow the following steps to get the PCR-GLOBWB model code:
 
     This will clone PCR-GLOBWB, as well as the models version history, into the current working directory.
 
-3. To run the PCR-GLOBWB model please checkout the [configure section](../configure.md) and [run section](../run.md) of this guide.
+3. To run the PCR-GLOBWB model please checkout the [configure section](../configure) and [run section](../run) of this guide.
 
 ## In short
 
