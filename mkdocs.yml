@@ -1,0 +1,52 @@
+site_name: PCR-GLOBWB model documentation
+theme:
+    name: windmill
+
+nav:
+    - Home: 'index.md'
+    - Model Overview:
+#        - General: 'model_overview/general.md'
+        - Meteorology: 'model_overview/meteorology.md'
+        - Land Surface: 'model_overview/land_surface.md'
+#        - Routing: 'model_overview/routing.md'
+#        - Water Use: 'model_overview/water_use.md'
+#    - Model Application:
+#        - Projects: 'model_application/projects.md'
+#        - Publications: 'model_application/publications.md'
+    - User Guide:
+        - Install: 'user_guide/install.md'
+        - Configure: 'user_guide/configure.md'
+        - Run: 'user_guide/run.md'
+        - Input Description: 'user_guide/input_description.md'
+        - Output Description: 'user_guide/output_description.md'
+#    - Tutorials:
+#        - Tutorial 1: 'tutorials/tutorial_1.md'
+#        - Tutorial 2: 'tutorials/tutorial_2.md'
+    - About:
+        - License: 'about/LICENSE.md'
+#        - Known Issues: 'about/known_issues.md'
+#        - Contact: 'about/contact.md'
+plugins:
+  - search
+  - bibtex:
+      bib_dir: "docs/bibliography"
+
+markdown_extensions:
+  - footnotes
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_div_format
+
+extra_css:
+  - https://unpkg.com/mermaid@7.1.2/dist/mermaid.css
+
+extra_javascript:
+  - https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js

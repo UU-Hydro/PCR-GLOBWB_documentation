@@ -1,0 +1,12 @@
+name: PCR-GLOBWB_model_documentation
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python==3.11.0
+  - pip==22.3.1
+  - mkdocs==1.4.2
+  - pip:
+    - mkdocs-material==8.5.10
+    - mkdocs-bibtex==2.8.5
+    - mkdocs-windmill==1.0.5
