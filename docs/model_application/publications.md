@@ -4,7 +4,7 @@
 * The Global Hydrological Model PCR-GLOBWB: Conceptualization, Parameterization and Verification (van Beek et al., 2009[@beek09])
 * PCR-GLOBWB 2: a 5 arcmin global hydrological and water resources model (Sutanudjaja et al., 2018[@sutanudjaja18])
 
-## Model addition references
+## Module-specific references
 * A physically based model of global freshwater surface temperature (van Beek et al., 2012[@beek12])
 * A high-resolution global-scale groundwater model (de Graaf et al., 2015[@graaf15])
 * A global-scale two-layer transient groundwater model: Development and application to groundwater depletion (de Graaf et al., 2017[@graaf17])
