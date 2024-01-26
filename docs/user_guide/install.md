@@ -6,19 +6,34 @@ PCR-GLOBWB is developed in Python and uses various supporting packages (e.g. pcr
 
 Please follow the following steps to setup a PCR-GLOBWB environment:
 
-1. To create a Python package environment, we recommend to install Miniconda, particularly for Python 3. Follow the Miniconda install instructions given [here](https://docs.conda.io/en/latest/miniconda.html). A user guide and short reference on the conda package manager can be found [here](https://docs.conda.io/projects/conda/en/latest/user-guide/cheatsheet.html).
+1. To create a Python package environment, we recommend to install Miniconda. Follow the Miniconda install instructions given [here](https://docs.conda.io/en/latest/miniconda.html). A user guide and short reference on the conda package manager can be found [here](https://docs.conda.io/projects/conda/en/latest/user-guide/cheatsheet.html).
 
-2. Now that Miniconda is installed, you can use it to make a package environment. To install the correct packages and their versions, we have created an environment file on [our GitHub repository](https://github.com/UU-Hydro/PCR-GLOBWB_model/blob/master/conda_env/pcrglobwb_py3.yml). Use the environment file to install all required packages to a conda environment:
+2. Now that Miniconda is installed, you can use it to make a package environment. To install the correct packages and their versions, we have created an environment file on [our GitHub repository](https://github.com/UU-Hydro/PCR-GLOBWB_model/blob/master/conda_env/pcrglobwb_py3.yml) (see also the example below). Use the environment file to install all required packages to a conda environment:
 
     `conda env create --name pcrglobwb_python3 --file pcrglobwb_py3.yml`
 
     This will create a environment named *pcrglobwb_python3*.
 
-3. To activate the PCR-GLOBWB environment:
-
-    `conda activate pcrglobwb_python3`
-
-    This will set the current environment to the *pcrglobwb_python3* environment
+**pcrglobwb_py3.yml**
+```yml
+name: pcrglobwb_python3
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.6
+  - numpy
+  - pip
+  - python-dateutil
+  - six  
+  - zlib
+  - pcraster
+  - pip:
+    - netcdf4>=1.5.3
+    - cdsapi
+  - cdo
+  - nco
+  - ncview
+```
 
 ## PCR-GLOBWB model code
 
@@ -28,16 +43,7 @@ Please follow the following steps to get the PCR-GLOBWB model code:
 
 2. Now that Git is installed, you can use it to clone and track the PCR-GLOBWB model code from the the main branch of [our GitHub repository](https://github.com/UU-Hydro/PCR-GLOBWB_model):
 
+    
     `git clone https://github.com/UU-Hydro/PCR-GLOBWB_model.git`
 
     This will clone PCR-GLOBWB, as well as the models version history, into the current working directory.
-
-3. To run the PCR-GLOBWB model please checkout the [configure section](../configure) and [run section](../run) of this guide.
-
-## In short
-
-```bash
-conda env create --name pcrglobwb_python3 --file pcrglobwb_py3.yml
-conda activate pcrglobwb_python3
-git clone https://github.com/UU-Hydro/PCR-GLOBWB_model.git
-```
