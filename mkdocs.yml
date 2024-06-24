@@ -5,7 +5,7 @@ theme:
 nav:
     - Home: 'index.md'
     - Model Overview:
-       - General: 'model_overview/general.md'
+        - General: 'model_overview/general.md'
         - Meteorology: 'model_overview/meteorology.md'
         - Land Surface: 'model_overview/land_surface.md'
         - Groundwater: 'model_overview/groundwater.md'
