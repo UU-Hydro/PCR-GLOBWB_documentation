@@ -20,6 +20,7 @@ nav:
         - Run: 'user_guide/run.md'
         - Input Description: 'user_guide/input_description.md'
         - Output Description: 'user_guide/output_description.md'
+        - Tutorials: 'tutorials/tutorials.md'
     - About:
         - License: 'about/LICENSE.md'
         - Contact: 'about/contact.md'
