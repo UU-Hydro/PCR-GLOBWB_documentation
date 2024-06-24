@@ -1,0 +1,5 @@
+# Groundwater module
+
+The groundwater module calculates groundwater storage dynamics based on recharge, capillary rise, groundwater discharge (baseflow), and riverbed infiltration. Groundwater discharge depends on a storage-outflow relationship, with the proportionality constant recession coefficient calculated using drainage theory. Riverbed infiltration occurs if groundwater discharge drops to 0 due to groundwater withdrawal. Persistent withdrawals exceeding groundwater recharge can lead to non-renewable groundwater withdrawal and depletion.
+
+PCR-GLOBWB can be coupled with a MODFLOW groundwater flow model to calculate groundwater heads. This can be done as a one-way coupling, where PCR-GLOBWB first runs with the standard groundwater module to provide a time series of net recharge and surface water levels, which then force the MODFLOW model. Alternatively, a two-way coupling can be used, exchanging fluxes between the groundwater model, land surface module, and surface water routing module at each time step.
