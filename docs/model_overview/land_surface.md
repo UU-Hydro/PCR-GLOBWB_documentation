@@ -49,10 +49,55 @@ In a cell, each land cover type is represented by a fraction of the land surface
 
 ## Atmosphere-canopy interactions
 
-Precipitation can fall as rain or snow (see Meteo) and will be intercepted by the canopy. The amount of intercepted precipitation is dependent on the canopy cover and its interception capacity. Both are related to the leaf area index and the values differ over time as a function of vegetation development. All intercepted precipitation is stored on the canopy where it is liable to evaporation. The throughfall is passed to the soil.
+Precipitation can fall as rain or snow (see Meteo) and will be intercepted by the canopy. The amount of intercepted precipitation is dependent on the canopy cover and its interception capacity. Both are related to the leaf area index and the values differ over time as a function of vegetation development. All intercepted precipitation is stored on the canopy where it is liable to evaporation. The throughfall is passed to the soil. 
 
-For each land cover type, a temporally variable crop factor is defined[@allen98] that depends on vegetation density, rooting depth, albedo and roughness as well as on the local meteorological conditions (wind speed, relative humity). This crop factor links the reference potential evaporation to a potential rate over the land cover type considered. The crop factor is dimensionless and equal to one if the land cover specific potential evaporation is equal to the reference potential evaporation, above it when it is larger. The assumed linearity in crop specific potential evaporation is the justification to obtain equivalent parameters per crop type by averaging the properties of different vegetation types by area.
-The crop-specific potential evaporation is the rate at which open water can evaporate over the surface. This is first subtracted from any water stored on the canopy, then from any liquid water present in the snow cover that can be present. What is left is passed to the soil surface where it is subdivided into bare soil evaporation and transpiration.
+For each land cover type, a temporally variable crop factor is defined (cf. Allen et al., 1998) that depends on vegetation density, rooting depth, albedo and roughness as well as on the local meteorological conditions (wind speed, relative humity). This crop factor links the reference potential evaporation to a potential rate over the land cover type considered. The crop factor is dimensionless and equal to one if the land cover specific potential evaporation is equal to the reference potential evaporation, above it when it is larger. The assumed linearity in crop specific potential evaporation is the justification to obtain equivalent parameters per crop type by averaging the properties of different vegetation types by area. 
 
-## Soil surface – Snow
+The crop-specific potential evaporation is the rate at which open water can evaporate over the surface. This is first subtracted from any water stored on the canopy, then from any liquid waters present in the snow cover that can be present. What is left is passed to the soil surface where it is subdivided into bare soil evaporation and transpiration. 
 
+ 
+## Soil hydrology 
+
+Soils in PCR-GLOBWB are represented by two to three vertical stacked layers of variable depth. The top layers represent the root zone (topsoil) whereas the second layer represents the deeper soil, in which the parent material is less affected by soil formation and bioturbation.  However, vegetation can root in all soil layers and access the soil moisture with its roots, where it is liable to transpiration. 
+
+The soil layers have a finite depth and soil properties that can vary per layer and per land cover type. The soil layers overlie a groundwater reservoir of unspecified depth. Between the soil layers and between the lower soil layer and the groundwater reservoir, water can be exchanged vertically. 
+
+ 
+
+*Soil surface – snow and rain* 
+
+Snowfall that passes the canopy accumulates as a snow layer that is described in terms of its snow water equivalent (SWE). The accumulated snow is subject to melt, which is temperature-driven and modeled according to the snow module of the HBV model [Bergström, 1976], including the storage of melt water in the snowpack, which may be prone to refreezing and evaporation. Any liquid precipitation (rain) passing the canopy reaches the soil surface. If a snowpack is present, all liquid water from rain and melt is added to the liquid water storage in the snowpack. If the storage capacity for liquid water of the snowpack is exceeded or a snowpack is absent, all water is passed to the soil surface. 
+
+ 
+
+*Infiltration and runoff generation* 
+
+Liquid water can reach the soil surface as a result of precipitation, snow melt or irrigation water application. All liquid water reaching the soi surface that does not infiltrate becomes direct runoff. In PCR-GLOBWB, there are three possible limitations to the amount of infiltration that are assessed in this order: 
+
+1. All liquid water falling over the saturated area of the cell cannot infiltrate and will become direct runoff. This represents the formation of saturation excess overland flow. The saturated fraction of the landlrea is computed per land cover type and represents the fraction of the soil depth distribution that is completely filled given the average soil moisture content in the soil profile conform the improved ARNO scheme [Hageman and Gates, 2003]; 
+
+2. All infiltration that exceeds the infiltration capacity over the time step cannot infiltrate and will become direct runoff. This represents the formation of infiltration excess overland flow. The infiltration capacity is taken equal to the saturated hydraulic conductivity of the top soil; 
+
+3. Any water that has entered the soil but cannot be accommodated once all fluxes have been updated, is passed to the surface as return flow and added to the direct runoff. 
+
+In addition to the direct runoff and the base flow that stems from the groundwater reservoir (see *Groundwater*), interflow can be an important contributor to the quick flow in mountainous environments, where it arises as a result of the combination of steep slopes and the sudden transition from higher to lower conductivities at the contact between soil and bedrock. In PCR-GLOBWB, interflow is modelled as a function of the percolation from the topsoil to the bottom soil layer in excess to that from the bottom layer to the groundwater reservoir. The rate of the interflow depends on the slope angle, the saturated pore space in excess of the field capacity and the saturated hydraulic conductivity of the lower layer using the simplified approach from Sloan and Moore [1984]. Similarly to the direct runoff, the interflow is computed per land cover type and aggregated to the bulk value for the land area based on the land cover fractions. 
+
+All runoff components are added to the stream flow in the cell within the current time step and routed (see *Routing*). 
+
+ 
+
+*Soil evaporation and transpiration* 
+
+Liquid water at the surface can be lost to evaporation. This concerns the liquid water in the snowpack, ponded water in the case of paddy irrigation, and interception storage that can be lost at or near the potential rate of evaporation. Water that infiltrates into the soil can also be lost through evaporation and transpiration. These losses are often smaller than the potential rate as bounded water has to be freed from the pores and stomata. 
+
+In PCR-GLOBWB, the remaining potential crop specific evaporation rate is computed per land cover type and partitioned into that part that is passed to the soil and to the vegetation canopy.  The first part depends on the minimum crop coefficient linked to bare soil evaporation. The actual rate of the bare soil evaporation is the minimum of the potential rate of bare soil evaporation and the hydraulic conductivity of the soil. Over the saturated fraction of the land area, the bare soil evaporation is limited by the saturated hydraulic conductivity, over the remainder it is limited by the unsaturated hydraulic conductivity. Bare soil evaporation can only be sustained by soil moisture close to the soil surface and is therefore only withdrawn from the topsoil. 
+
+Transpiration is lost via the canopy and is withdrawn by the roots. The potential transpiration is all the crop specific evaporation that is not passed to the bare soil. Transpiration can only be withdrawn from the unsaturated part of the cell. The actual rate of transpiration is dependent on the average degree of saturation in the soil and scales from zero at wilting point to unity at field capacity or above. The actual transpiration rate is subdivided over the topsoil and the deeper soil based on the respective root fraction in the layers. Both the bare soil evaporation and the transpiration are computed per land cover type and aggregated over the land area. 
+
+ 
+
+*Soil water balance* 
+
+The soil water balance is solved per land cover type and aggregated over the land area.  
+
+The soil water balance considers all the vertical fluxes, which comprise for the topsoil the infiltration, bare soil evaporation and the transpiration, the vertical percolation to the deeper soil, and a potential upward flux from the deeper soil to the topsoil. For the deeper soil layer, the fluxes include the transpiration, the vertical percolation to the groundwater reservoir, the incoming percolation from the topsoil, as well as the upward fluxes from the groundwater reservoir to the deeper soil and from the deeper soil to the topsoil. The latter two fluxes represent the capillary rise and occur only if the vertical gradient from the groundwater reservoir to the deeper soil and from the deeper soil to the topsoil are directed upward. Capillary rise can only be sustained for those parts of the cell for which groundwater is within 5 m of the lower soil layer. Percolation is driven by gravity only and all vertical soil hydrological fluxes are proportional to the unsaturated hydraulic conductivity of the pertinent layer. The soil water retention curve that relates the soil moisture content to the matric suction and to the unsaturated hydraulic conductivity are based on the relationships proposed by Clapp and Hornberger [1978]. 
