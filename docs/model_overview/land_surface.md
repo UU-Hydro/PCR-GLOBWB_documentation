@@ -17,37 +17,37 @@ A broad distinction can be made between those land cover types that only receive
 
 As mentioned before, all land cover types can be present in a cells and they are distinguished on the basis of their suspected influence on the hydrological response. However, since the solution of the daily water balance in PCR-GLOBWB requires that the model iterates over all the land cover types, the number of land cover types should be limited in order to keep computation times manageable. Typically, the following land cover types are used:
 
-*Tall natural vegetation*
+#### Tall natural vegetation
 
 This concerns forests, woody vegetation of considerable height. This increases the turbulent exchange of latent heat with the atmosphere. The canopy is often dense, and can be evergreen or deciduous, and hence the transpiration rate is generally large. Because of the canopy, the amount of bare soil evaporation is relatively smaller, also because this land cover type roots deep where possible and can extract moisture for transpiration at greater depth. Forests can be managed and used but this is of minor influence on the diversity of the vegetation  and does not affect their density or height.
 
-*Short natural vegetation*
+#### Short natural vegetation
 
 This land cover type is similar to *tall natural vegetation* but is generally shorter and/or more sparse and roots less deep. As a consequence, the evapotranspiration will tend to be lower and bare soil evaporation tends to become relatively more prominent.
 
-*Pasture and rangeland*
+#### Pasture and rangeland
 
 This is an intermediate category between the natural land cover types and cultivated land. It can comprise pastures and meadows that are akin to *short natural vegetation* and rangeland with semi-natural vegetation from herbs to shrubs and trees that are more alike *tall natural vegetation*. This category is particularly included to incorporate the effect of decreasing vegetation height and density compared to the natural vegetation types.
 
-*Rainfed crops*
+#### Rainfed crops
 
 Rainfed crops represent cultivated land. Typically, this can be characterized as a single crop on a field during predefined growing season, intersected by fallow periods. As such, canopy density will vary strongly over time and periods of increased transpiration occur in between periods of increased direct runoff and bare soil evaporation. Vegetation properties such as height and root depth may vary strongly between crops and have to be accounted for.
 
-*Irrigated non-paddy crops*
+#### Irrigated non-paddy crops
 
 As *rainfed crops* but now irrigation water is applied in order to obtain more favourable crop growth and yields. The nature of the irrigation is described in detail in Water Demand and Use. With irrigation, soil moisture will increase and so will the evapotranspiration and deep drainage to the groundwater.
 
-*Irrigated paddy crops*
+#### Irrigated paddy crops
 
 Irrigated paddy crops differ from *irrigated non-paddy crops* that the main purpose of irrigation in the case of wet rice is directed towards pest control by permanently ponding the surface and not so much to overcome water constraints on the assimilation process during crop growth. As such the amount of irrigation water required and the scheduling are different (see Water Demand and Use for details). In addition to its effect on the water demand, paddy irrigation creates permanently ponded water surfaces that increase the open water evaporation while the infiltration of the ponded water into the soil leads to increased soil moisture contents that persist once irrigation ceases.
 
-*Urban areas*
+#### Urban areas
 
 Urban conditions span from sub-urban areas to metropolitan areas that are very different in appearance but are all characterized by an increased are of impervious, built-up areas that will not accommodate water but rather discharge this quickly as direct runoff. This land cover type takes this in account by including the impervious area in addition to other vegetation types that can be present that may represent parks, undeveloped land etc.
 
 In a cell, each land cover type is represented by a fraction of the land surface in that cell that is complementary to the area of open freshwater (river stretch, water body). The parameterization for a land cover type in a cell is specific and may summarize many different vegetation types present. This summary is obtained by averaging the properties of a specific vegetation type belonging to a land cover type on the basis of the corresponding area. So, multiple types of forests (deciduous, evergreen) or mixed forests (savannah) can be averaged to a representative property. This averaging can consider temporal variations as well, as would arise because of differences in phenology, e.g., deciduous forest, or because of cropping calendars and growth, for example when different crop types are present in a cell or multi-cropping is used. The underlying assumption for this linear proportionality with area is based on the FAO guidelines for crop water requirements[@allen98] and is explained in the next section.
 
-## Atmosphere-canopy interactions 
+## Atmosphere-canopy interactions
 
 Precipitation can fall as rain or snow (see Meteo) and will be intercepted by the canopy. The amount of intercepted precipitation is dependent on the canopy cover and its interception capacity. Both are related to the leaf area index and the values differ over time as a function of vegetation development. All intercepted precipitation is stored on the canopy where it is liable to evaporation. The throughfall is passed to the soil. 
 

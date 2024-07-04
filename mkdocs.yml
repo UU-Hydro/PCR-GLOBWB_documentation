@@ -5,9 +5,10 @@ theme:
 nav:
     - Home: 'index.md'
     - Model Overview:
-#        - General: 'model_overview/general.md'
+        - General: 'model_overview/general.md'
         - Meteorology: 'model_overview/meteorology.md'
         - Land Surface: 'model_overview/land_surface.md'
+        - Groundwater: 'model_overview/groundwater.md'
 #        - Routing: 'model_overview/routing.md'
 #        - Water Use: 'model_overview/water_use.md'
     - Model Application:
@@ -19,6 +20,7 @@ nav:
         - Run: 'user_guide/run.md'
         - Input Description: 'user_guide/input_description.md'
         - Output Description: 'user_guide/output_description.md'
+        - Tutorials: 'tutorials/tutorials.md'
     - About:
         - License: 'about/LICENSE.md'
         - Contact: 'about/contact.md'

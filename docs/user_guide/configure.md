@@ -1,6 +1,6 @@
 # How to configure
 
-PCR-GLOBWB requires a [YAML](https://yaml.org/) configuration file to run. The configuration file details, for example, the simulation period, the location of the inputs and the location where the outputs should be stored. Here we provide a short guide to the configuration file, including some examples. *Note that a detailed description of all model inputs and outputs is given in the [input description section](../input_description) and [output description section](../output_description) respectively*
+PCR-GLOBWB requires a [.ini](https://en.wikipedia.org/wiki/INI_file) configuration file to run. The configuration file details, for example, the simulation period, the location of the inputs and the location where the outputs should be stored. Here we provide a short guide to the configuration file, including some examples. *Note that a detailed description of all model inputs and outputs is given in the [input description section](../input_description) and [output description section](../output_description) respectively*
 
 ## Structure
 
